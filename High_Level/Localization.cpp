@@ -1,9 +1,7 @@
 #include "Localization.h"
 
 #define mySerial Serial3
-
 Adafruit_GPS GPS(&mySerial);
-
 //Adafruit_L3GD20 gyro; GYRO still not working
 //#ifdef USE_I2C
   // The default constructor uses I2C
@@ -31,7 +29,7 @@ Localization::Localization(Origin &org, Waypoint &estimated_position, Waypoint &
   mag.enableAutoRange(true);
   accel.enableAutoRange(true);
   
-   if(!accel.begin())
+  if(!accel.begin())
   {
     /* There was a problem detecting the ADXL345 ... check your connections */
     if(DEBUG) Serial.println("Ooops, no accelerometer detected ... Check your wiring!");
@@ -65,14 +63,10 @@ void Localization::setup_GPS() {
   //Serial 3 (mySerial) is used for GPS
   mySerial.begin(GPSRATE);
   // Serial3.begin(GPSRATE);
-  if(!GPS.begin(GPSRATE))
-  {
-    if(DEBUG) Serial.println("Ooops, no GPS detected ... Check your wiring!");
-  }
+  GPS.begin(GPSRATE);
 
   // uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
   //GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
-
   // uncomment this line to turn on only the "minimum recommended" data
   GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCONLY);
   // For parsing data, we don't suggest using anything but either RMC only or RMC+GGA since

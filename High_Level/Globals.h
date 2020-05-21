@@ -1,12 +1,8 @@
 #pragma once
 #include <due_can.h>
 #include "Can_Protocol.h"
-#include "Common.h"
 
 namespace elcano{
-
-
-#define SIMULATION true //
 
 //set to 'false' to stop debug Serial.print/ln printing
 #define DEBUG true  //general debugging entering methods, passing tests etc
@@ -27,6 +23,9 @@ namespace elcano{
 //#define DESIRED_SPEED_mmPs 1600 
  
 const long turn_speed = 835;
+
+//from common.h
+
 
 #define DESIRED_SPEED_mmPs 1390 //3.1 mph //used in getGoals to set speed to goals
 #define SLOW_SPEED_mmPs 833 //1.9 mph
@@ -66,8 +65,7 @@ const long turn_speed = 835;
 // 10 mph = 4.44 m/s
 #define MAX_SPEED_mmPs       4444
 
-//origin set to center of UWB soccer field
-#define ORIGIN_LAT 47.760850 
-#define ORIGIN_LONG -122.190044
+
+
 
 }//end namespace elcano
